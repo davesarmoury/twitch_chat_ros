@@ -1,0 +1,16 @@
+string badge_info
+string badges
+string bits
+string client_nonce
+string color
+string display_name
+string emotes
+string flags
+string id
+string mod
+string room_id
+string subscriber
+string tmi_sent_ts
+string turbo
+string user_id
+string user_type

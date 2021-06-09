@@ -1,0 +1,13 @@
+<launch>
+  <arg name="username" />
+  <arg name="client_id" />
+  <arg name="token" />
+  <arg name="channel" />
+
+  <node name="twitch_bot" pkg="twitch_chat_ros" type="simple_bot.py" output="screen">
+    <param name="username" value="$(arg username)"/>
+    <param name="client_id" value="$(arg client_id)"/>
+    <param name="token" value="$(arg token)"/>
+    <param name="channel" value="$(arg channel)"/>
+  </node>
+</launch>
