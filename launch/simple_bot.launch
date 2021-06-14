@@ -1,8 +1,8 @@
 <launch>
-  <arg name="username" />
-  <arg name="client_id" />
-  <arg name="token" />
-  <arg name="channel" />
+  <arg name="username" default="$(env TWITCH_USERNAME)" />
+  <arg name="client_id" default="$(env TWITCH_CLIENT_ID)" />
+  <arg name="token" default="$(env TWITCH_TOKEN)" />
+  <arg name="channel" default="$(env TWITCH_CHANNEL)" />
 
   <node name="twitch_bot" pkg="twitch_chat_ros" type="simple_bot.py" output="screen">
     <param name="username" value="$(arg username)"/>
