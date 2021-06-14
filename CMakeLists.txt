@@ -4,7 +4,6 @@ project(twitch_chat_ros)
 find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
-  twitch_chat_ros
   message_generation
 )
 
@@ -31,3 +30,17 @@ include_directories(
 # include
 # ${catkin_INCLUDE_DIRS}
 )
+
+install(DIRECTORY launch
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+)
+
+install(PROGRAMS
+  scripts/simple_bot.sh
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
+if (CATKIN_ENABLE_TESTING)
+  find_package(roslaunch REQUIRED)
+  roslaunch_add_file_check(launch/simple_bot.launch)
+endif()
