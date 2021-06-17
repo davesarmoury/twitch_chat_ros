@@ -15,6 +15,8 @@ class TwitchBot(irc.bot.SingleServerIRCBot):
         self.channel = '#' + channel
         self.pub = pub
 
+        self.conn = None
+
         # Get the channel id, we will need this for v5 API calls
         url = 'https://api.twitch.tv/kraken/users?login=' + channel
         headers = {'Client-ID': client_id, 'Accept': 'application/vnd.twitchtv.v5+json'}
@@ -35,6 +37,7 @@ class TwitchBot(irc.bot.SingleServerIRCBot):
         c.cap('REQ', ':twitch.tv/tags')
         c.cap('REQ', ':twitch.tv/commands')
         c.join(self.channel)
+        self.conn = c
 
     def getTagsDict(self, e):
         tags = {}
@@ -75,8 +78,8 @@ class TwitchBot(irc.bot.SingleServerIRCBot):
         self.pub.publish(self.populate_msg(e, tags))
         return
 
-    def callback(self, data):
-        pass
+    def callback(self, msg):
+        self.conn.privmsg(self.channel, str(msg.data))
 
 def main():
     rospy.init_node('twitch_bot', anonymous=True)
