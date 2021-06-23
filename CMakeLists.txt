@@ -36,7 +36,7 @@ install(DIRECTORY launch
 )
 
 install(PROGRAMS
-  scripts/simple_bot.sh
+  scripts/simple_bot.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
